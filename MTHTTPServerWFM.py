@@ -359,8 +359,8 @@ class HTTPRequestHandlerWFM(BaseHTTPRequestHandler):
                 return (False, "can't find out the file name")
             path = self.translate_path(self.path)
             fn = os.path.join(path, fn[0].decode("utf-8"))
-            while os.path.exists(fn):
-                fn += "_"
+            #while os.path.exists(fn):
+            #    fn += "_"
             line = self.rfile.readline()
             remainbytes -= len(line)
             line = self.rfile.readline()
