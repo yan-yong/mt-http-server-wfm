@@ -323,7 +323,7 @@ class HTTPRequestHandlerWFM(BaseHTTPRequestHandler):
                      % (res, msg, self.client_address))
         f = StringIO()
         postpage = self.hs.gen_postpage(
-            result=str(res), msg=msg, refer=self.headers["Referer"]
+            result=str(res), msg=msg, refer=self.headers.get("Referer")
         )
         f.write(postpage)
         length = f.tell()
