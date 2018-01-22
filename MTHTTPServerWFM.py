@@ -40,6 +40,8 @@ except ImportError:
 
 # ============================== Config ==============================
 ENC = sys.stdout.encoding
+if ENC == "":
+    ENC = 'UTF-8'
 ENC_MAP = {"cp936": "gbk"}
 CHARSET = ENC_MAP.get(ENC, "utf-8")
 
