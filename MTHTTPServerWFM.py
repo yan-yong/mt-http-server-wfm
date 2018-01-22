@@ -40,7 +40,7 @@ except ImportError:
 
 # ============================== Config ==============================
 ENC = sys.stdout.encoding
-if ENC == "":
+if ENC == "" or ENC is None:
     ENC = 'UTF-8'
 ENC_MAP = {"cp936": "gbk"}
 CHARSET = ENC_MAP.get(ENC, "utf-8")
@@ -325,7 +325,7 @@ class HTTPRequestHandlerWFM(BaseHTTPRequestHandler):
                      % (res, msg, self.client_address))
         f = StringIO()
         postpage = self.hs.gen_postpage(
-            result=str(res), msg=msg, refer=self.headers["Referer"]
+            result=str(res), msg=msg, refer=self.headers.get("Referer")
         )
         f.write(postpage)
         length = f.tell()
